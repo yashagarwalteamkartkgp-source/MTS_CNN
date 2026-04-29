@@ -1,0 +1,34 @@
+seed: 42
+
+data:
+  num_wafers: 50
+  num_sensors: 5
+  window_size: 40
+  stride: 10
+  add_noise: True
+  noise_level: 0.05
+
+model:
+  num_sensors: 5
+  use_grouped_conv: True
+  cnn_layers:
+    - out_channels: 8
+      kernel_size: 5
+      pool_type: 'max'
+      pool_size: 2
+    - out_channels: 16
+      kernel_size: 3
+      pool_type: 'max'
+      pool_size: 2
+  classifier_hidden_dim: 32
+  num_classes: 2
+
+training:
+  epochs: 5
+  batch_size: 16
+  learning_rate: 0.01
+  momentum: 0.9
+  weight_decay: 0.0001
+  patience: 3
+  checkpoint_dir: 'outputs/models'
+  log_freq: 10
